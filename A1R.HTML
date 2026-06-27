@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AWAKAN</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+
+<!--OUTline-->
+<button id="back" style="width: 40px;height: 40px; border: none; border-radius: 20px;background-color:none;margin-left: 80px;" onclick="window.location.href='./A1H.html'">
+<img src="arrow_back_24dp_75FB4C_FILL0_wght400_GRAD0_opsz24.png" alt="">
+
+</button>
+
+
+
+<div class="container">
+<h2 style="color: #FAE4B0;text-align: center;"> REGISTER </h2>
+<input id="u1" type="text" placeholder="Enter Username" style="border: 1px solid aliceblue; border-radius: 10px;height:32px;">
+<input id="p1" type="password" placeholder="Enter Password"  style="border: 1px solid aliceblue; border-radius: 10px;height:32px;">
+<input id="c1" type="text" placeholder="Enter City" style="border: 1px solid aliceblue; border-radius: 10px;height:32px;">
+
+<button  id="s1"style="border: 1px solid aliceblue; border-radius: 10px;height:32px;background-color:#FAE4B0;">SIGN UP</button>
+
+</div>
+
+
+
+
+
+<!--STYLE-->
+<style>
+.container{
+width:35vw;
+height:45vh;
+background-color: #84AFB4;
+border-radius: 20px;
+display: flex;
+align-items: center;
+flex-direction: column;
+justify-content: center;
+justify-content: space-evenly;
+border:1.2px solid grey;
+}
+body{
+    margin:0;
+    background-color: #9DD9D2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+/*MOBILES*/
+@media (max-width:480px){
+
+    body{
+        padding:15px;
+        margin-left: -50px;
+        gap:18px;
+    }
+
+    .container{
+        width:95%;
+        min-width:0;
+        min-height:auto;
+
+        padding:25px 20px;
+        border-radius:15px;
+    }
+
+}
+
+
+
+@media (max-width:320px){
+
+    .container{
+        width:100%;
+        padding:15px;
+    }
+
+}
+
+
+
+</style>
+
+<!--script-->
+
+
+<script>
+let s = document.querySelector("#s1");
+
+s.addEventListener("click", async () => {
+
+    let username = document.querySelector("#u1").value;
+    let password = document.querySelector("#p1").value;
+    let city = document.querySelector("#c1").value;
+
+
+        let response = await fetch("http://localhost:4000/R1", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username,
+                password,
+                city
+            })
+        });
+
+    if(response.status==200){
+
+let d=document.createElement("div");
+let body=document.querySelector("body")
+body.append(d);
+let con=document.querySelector(".container");
+con.style.display="none"
+d.style.width="200px";
+d.style.height="100px";
+d.style.backgroundColor="grey";
+d.style.borderRadius="20px";
+d.style.boxShadow="0px 0px 10px black";
+d.innerText="registered sucessfully...";
+d.style.textAlign="center";
+setTimeout(()=>{
+
+window.location.href="./A1H.html";
+
+},4000);
+}
+});
+</script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>

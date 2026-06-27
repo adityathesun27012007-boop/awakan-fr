@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AWAKAN</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#FCA17D;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    font-family:Georgia, serif;
+    margin-left: -17px;
+}
+
+.container{
+    width:70%;
+    max-width:900px;
+    background:#F9DBBD;
+    border:2px solid #a67c52;
+    border-radius:20px;
+    padding:40px;
+}
+
+.heading{
+    text-align:center;
+    color:cornflowerblue;
+    margin-bottom:30px;
+}
+
+label{
+    display:block;
+    font-size:20px;
+    font-weight:bold;
+    color:cornflowerblue;
+    margin-bottom:10px;
+    margin-top:20px;
+}
+
+.title-input{
+    width:100%;
+    height:50px;
+    border-radius:30px;
+    border:2px solid #8ff5d0;
+    background:#e8e7cf;
+    padding:0 20px;
+    font-size:18px;
+}
+
+.desc-input{
+    width:100%;
+    height:250px;
+    border-radius:30px;
+    border:1px solid gray;
+    background:#efefef;
+    padding:15px;
+    resize:none;
+    font-size:16px;
+}
+
+.image-input{
+    width:100%;
+    padding:12px;
+    border-radius:15px;
+    border:1px solid gray;
+    background:white;
+}
+
+.submit-btn{
+    width:100%;
+    height:50px;
+    margin-top:25px;
+    border:none;
+    border-radius:25px;
+    background:#d0d0d0;
+    font-size:22px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.submit-btn:hover{
+    background:#bcbcbc;
+}
+@media screen and (max-width:480px){
+
+body{
+    padding:15px;
+}
+
+.container{
+    width:100%;
+    padding:20px 15px;
+    border-radius:12px;
+}
+
+.heading{
+    font-size:24px;
+}
+
+label{
+    font-size:16px;
+    margin-top:15px;
+}
+
+.title-input{
+    height:42px;
+    font-size:15px;
+    border-radius:20px;
+}
+
+.desc-input{
+    height:160px;
+    font-size:14px;
+    border-radius:20px;
+}
+
+.image-input{
+    font-size:14px;
+    padding:10px;
+}
+
+.submit-btn{
+    height:45px;
+    font-size:18px;
+    border-radius:20px;
+}
+
+}
+
+
+
+@media screen and (max-width:320px){
+
+.heading{
+    font-size:20px;
+}
+
+label{
+    font-size:14px;
+}
+
+.title-input{
+    font-size:14px;
+}
+
+.desc-input{
+    height:140px;
+    font-size:13px;
+}
+
+.submit-btn{
+    font-size:16px;
+    height:42px;
+}
+
+}
+</style>
+
+</head>
+<body>
+<button id="back" style="width: 40px;height: 40px; border: none; border-radius: 20px;background-color:none;margin-right: 20px;" onclick="window.location.href='./UA1L.html'">
+<img src="arrow_back_24dp_75FB4C_FILL0_wght400_GRAD0_opsz24.png" alt="">
+
+</button>
+<div class="container">
+
+    <h1 class="heading">TAKE A CSNAP</h1>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+
+        <label>TITLE</label>
+        <input
+            type="text"
+            name="title"
+            class="title-input"
+            placeholder="Enter title"
+            required
+        >
+
+        <label>DESCRIBE</label>
+        <textarea
+            name="description"
+            class="desc-input"
+            placeholder="Write something..."
+            required
+        ></textarea>
+
+        <label>UPLOAD IMAGE</label>
+        <input
+            type="file"
+            name="image"
+            accept="image/*"
+            class="image-input"
+            required
+        >
+
+        <button type="button" class="b">
+            CSPOST
+        </button>
+
+    </form>
+
+</div>
+
+
+
+
+<!--SCRIPT-->
+<script>
+
+let b=document.querySelector(".b");
+b.addEventListener("click",async(err,res)=>{
+
+let titleinput=document.querySelector(".title-input").value;
+let descinput=document.querySelector(".desc-input").value;
+let imageinput=document.querySelector(".image-input");
+ let p3=localStorage.getItem("id");
+
+ 
+let fd = new FormData();
+
+fd.append("titleinput", titleinput);
+fd.append("descinput", descinput);
+fd.append("p3", p3);
+fd.append("imageinput", imageinput.files[0]);
+
+let response=await fetch("http://localhost:4000/CS",{
+    method:"POST",
+    body:fd
+});
+
+    let result = await response.text();
+    console.log(result);
+window.location.href="./A1VS.html";
+
+          });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

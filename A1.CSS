@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* LOGO ANIME*/
+.logoAn {
+
+    height: 100vh;
+    background-color: #9DD9D2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+    animation-name: logoAni;
+
+    animation-duration: 9s;
+    animation-delay: 0ms;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+@keyframes logoAni {
+ 
+
+    40% {
+        gap: 65px;
+    }
+
+    45% {
+        gap: 60px;
+    }
+
+    50% {
+        gap: 55px;
+    }
+
+    55% {
+        gap: 50px;
+    }
+
+    60% {
+        gap: 45px;
+    }
+
+    65% {
+        gap: 40px;
+    }
+
+    70% {
+        gap: 35px;
+    }
+
+    75% {
+        gap: 30px;
+    }
+
+    80% {
+        gap: 25px;
+    }
+
+    85% {
+        gap: 20px;
+    }
+
+    90% {
+        gap: 15px;
+    }
+
+    92% {
+        justify-content: center;
+    }
+
+    100% {
+         justify-content: center;
+        
+    }
+}
+@media (max-width:480px){
+
+    .logoAn{
+        padding:0 12px;
+    }
+
+    .logoAn h1{
+        font-size:2.8rem;
+    }
+
+    @keyframes logoAni{
+
+        0%{justify-content:space-between; gap:0;}
+
+        40%{gap:18px;}
+        50%{gap:16px;}
+        60%{gap:14px;}
+        70%{gap:12px;}
+        80%{gap:10px;}
+        90%{gap:8px;}
+
+        100%{
+            justify-content:center;
+            gap:8px;
+        }
+    }
+
+}
+
+
+
+@media (max-width:320px){
+
+  .logoAn h1{
+        font-size:2.2rem;
+    }
+
+}
+
+
+
+

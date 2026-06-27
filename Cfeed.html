@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWAKAN</title>
+</head>
+<body style="background-color: #FCA17D;">
+
+<!--OUTLINE-->
+<button id="back" style="width: 40px;height: 40px; border: none; border-radius: 20px;background-color:none;margin-right: 20px;" onclick="window.location.href='./UA1L.html'">
+<img src="arrow_back_24dp_75FB4C_FILL0_wght400_GRAD0_opsz24.png" alt="">
+
+</button>
+<!--outer box-->
+<div class="box" style="color:cornflowerblue; background-color: #F9DBBD;">
+
+    <div id="b1">
+<h3>TITLE</h3>
+<input id="p1"style="width: 300px;height:30px;color: black;background-color: beige;border-radius: 20px;border: 1px solid aquamarine;box-shadow: 0px 0px 4px aquamarine;" type="text" placeholder="Write here...">
+
+</div>
+
+
+    <div id="b2">
+<h3>DESCRIBE</h3>
+<textarea id="p2" placeholder="Write description here..."></textarea>
+</div>
+<button id="s"style="width:300px ;height: 25px;background-color:lightgrey;color:black;border-radius: 10px;border-width:0;margin-top: 15px;" onclick="feed()">CPOST</button>
+
+</div>
+
+
+
+
+
+
+
+
+
+<!--STYLE-->
+
+<style>
+.box{
+width: 70vw;
+border-radius:10px ;
+height: 100vh ;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+box-shadow: 0px 0px 4px black;
+
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#p2{
+    width:300px;
+    height:300px;
+    resize:none;
+    padding:10px;
+    border-radius:20px;
+}
+@media screen and (max-width:480px){
+
+.box{
+    width:100%;
+    padding:20px 15px;
+    border-radius:15px;
+}
+
+h3{
+    font-size:18px;
+}
+
+#p1{
+    height:45px !important;
+    font-size:16px;
+}
+
+#p2{
+    height:180px;
+    font-size:15px;
+}
+
+#s{
+    height:45px !important;
+    font-size:16px;
+}
+
+#back{
+    width:36px !important;
+    height:36px !important;
+}
+
+}
+
+
+/* ================= SMALL PHONES ================= */
+
+@media screen and (max-width:320px){
+
+h3{
+    font-size:16px;
+}
+
+#p1{
+    font-size:14px;
+}
+
+#p2{
+    height:150px;
+    font-size:14px;
+}
+
+#s{
+    font-size:15px;
+}
+
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+<!--SCRIPT-->
+
+
+  <script>
+
+
+    let s = document.querySelector("#s");
+
+    s.addEventListener("click", async () => {
+
+      let p1= document.querySelector("#p1").value;
+      let p2= document.querySelector("#p2").value;
+      let p3=localStorage.getItem("id");
+      try {
+        let response = await fetch("http://localhost:4000/CF",
+
+          {
+
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              p1,
+              p2,
+              p3
+            })
+          });
+        let data = await response.text();
+        console.log(data);
+      }
+      catch (err) {
+        console.log(err);
+      }
+
+
+
+
+
+    })
+
+
+
+
+function feed(){
+  window.location.href="./A1VF.html";
+}
+
+
+
+
+
+
+  </script>
+
+
+ 
+</body>
+</html>
